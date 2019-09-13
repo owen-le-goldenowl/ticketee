@@ -71,3 +71,6 @@ gem 'foundation-rails'
 
 # make rails generate slim by default instead of erb
 gem 'slim-rails'
+
+# jquery
+gem 'jquery-rails'
