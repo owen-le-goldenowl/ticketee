@@ -66,3 +66,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Foundation template
 gem 'autoprefixer-rails'
 gem 'foundation-rails'
+
+# make rails generate slim by default instead of erb
+gem 'slim-rails'
