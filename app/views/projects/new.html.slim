@@ -1,5 +1,15 @@
 h2 New Project
-= form_with model: @project do |f|
+= form_for @project do |f|
+
+  - if @project.errors.any?
+    #error_explanation
+      h2 = pluralize(@project.errors.size, 'error') + ' prohibited this project from being saved:'
+
+      ul
+        - @project.errors.full_messages.each do |msg|
+          li = msg
+
+
   p
     = f.label :name
     br
@@ -9,4 +19,4 @@ h2 New Project
     br
     = f.text_field :description
 
-  = f.submit
+  = f.submit class: 'button primary'
