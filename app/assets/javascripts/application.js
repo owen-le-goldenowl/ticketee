@@ -15,7 +15,7 @@
 //= require jquery3
 //= require foundation
 //= require turbolinks
-
+//= require_tree .
 
 
 

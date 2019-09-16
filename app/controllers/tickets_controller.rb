@@ -51,5 +51,9 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = @project.tickets.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'The ticket you were looking could not be found'
+    redirect_to project_path(@project)
   end
+
 end
