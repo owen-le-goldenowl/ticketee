@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tickets
   end
+  match '*path', to: 'errors#not_found', via: :all
 end
