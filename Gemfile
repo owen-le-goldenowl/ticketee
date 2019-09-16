@@ -74,3 +74,5 @@ gem 'slim-rails'
 
 # jquery
 gem 'jquery-rails'
+
+gem 'bcrypt'
