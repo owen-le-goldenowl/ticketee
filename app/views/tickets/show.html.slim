@@ -1,3 +1,6 @@
 #ticket
   h2 = @ticket.title
   = simple_format(@ticket.description)
+
+= link_to 'Edit Ticket',edit_project_ticket_path(@project,@ticket), class: 'button primary'
+=< link_to 'Back',project_path(@project), class: 'button secondary'
