@@ -1,9 +1,19 @@
 require 'rails_helper'
+require 'helpers/authentication_helpers'
+
+RSpec.configure do |c|
+  c.include AuthenticationHelpers
+end
+
 feature 'Editing tickets' do
   let!(:exp_project) { FactoryBot.create(:project) }
-  let!(:exp_ticket) { FactoryBot.create(:ticket, project: exp_project) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:exp_ticket) do
+    FactoryBot.create(:ticket, project: exp_project, user: user)
+  end
 
   before do
+    sign_in_as!(user)
     visit '/'
     click_link exp_project.name
     click_link exp_ticket.title
