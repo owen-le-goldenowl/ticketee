@@ -19,4 +19,7 @@
   p
     = f.label :password_confirmation
     = f.password_field :password_confirmation,placeholder: 'Password confirmation'
-  = f.submit 'Sign up'
+  - if @user.new_record?
+    = f.submit 'Sign up', class:'button success'
+  - else
+    = f.submit 'Update Profile', class: 'button success'
