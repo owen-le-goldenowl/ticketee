@@ -19,8 +19,7 @@ describe User, type: :model do
     u = User.new(
         name: 'Khang',
         password: 'hunter2',
-        password_confirmation: 'hunter'
-    )
+        password_confirmation: 'hunter')
     expect(u).to_not be_valid
   end
 

@@ -15,9 +15,19 @@ html lang="en"
     = csrf_meta_tag
 
   body
+    nav
+      = link_to 'Sign up', new_user_path, class: 'button primary'
 
     - flash.each do |key, value|
-      div class='flash' id='key'
-        = value
+      - if key == 'notice'
+        div [class='callout success' data-closable]
+          = value
+          button [class='close-button' aria-label='Dismiss alert' type='button' data-close]
+            span [aria-hidden='true'] &times
+      - elsif key == 'alert'
+        div [class='callout alert' data-closable]
+          = value
+          button [class='close-button' aria-label='Dismiss alert' type='button' data-close]
+            span [aria-hidden='true'] &times
 
     == yield
