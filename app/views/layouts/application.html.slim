@@ -15,8 +15,9 @@ html lang="en"
     = csrf_meta_tag
 
   body
-    nav
-      = link_to 'Sign up', new_user_path, class: 'button primary'
+    ul class='menu align-right'
+      li =< link_to 'Sign up', new_user_path,class:'button'
+      li =< link_to 'Sign in', signin_path,class:'button'
 
     - flash.each do |key, value|
       - if key == 'notice'
