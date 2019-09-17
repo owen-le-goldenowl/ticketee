@@ -1,7 +1,13 @@
 require 'rails_helper'
+require('helpers/authentication_helpers')
+
+RSpec.configure do |c|
+  c.include AuthenticationHelpers
+end
 
 feature 'Creating Projects' do
   before do
+    sign_in_as!(FactoryBot.create(:admin_user))
     visit '/'
     click_link 'New Project'
   end
