@@ -1,6 +1,11 @@
 #ticket
   h2 = @ticket.title
   = simple_format(@ticket.description)
+  span#author
+    | Created by the
+    strong
+      =< @ticket.user.name
+    |  user
 
 = link_to 'Edit Ticket',edit_project_ticket_path(@project, @ticket), class: 'button primary'
 =< link_to 'Delete Ticket',project_ticket_path(@project, @ticket), method: :delete, data: { confirm: 'Are you sure you want to delete this ticket?' }, class: 'button alert'

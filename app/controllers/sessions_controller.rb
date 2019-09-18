@@ -8,13 +8,14 @@ class SessionsController < ApplicationController
       flash[:notice] = 'Log in success'
       redirect_to projects_path
     else
-      flash[:error] = 'Name and Password combination does not match!'
+      flash[:error] = 'Invalid credentials!'
       render 'new'
     end
 
   end
 
   def destroy
+    logout
   end
 
 end
