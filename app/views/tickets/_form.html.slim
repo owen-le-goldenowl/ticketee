@@ -1,11 +1,12 @@
 = form_for [@project, @ticket] do |f|
   - if @ticket.errors.any?
-    #error_explanation
+    div [id='error_explanation' class="callout alert" data-closable]
       h2 = pluralize(@ticket.errors.size, 'error') + ' prohibited this ticket from being saved:'
       ul
         - @ticket.errors.full_messages.each do |msg|
           li = msg
-
+      button [class='close-button' aria-label="Dismiss alert" type='button' data-close ]
+        span [aria-hidden="true" ] &times;
   p
     = f.label :title
     = f.text_field :title

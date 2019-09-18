@@ -1,0 +1,26 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    div [id='error_explanation' class='callout alert' data-closable]
+      h2 = pluralize(@user.errors.size, 'error') + ' prevent this user from being saved:'
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li = msg
+      button [class='close-button' aria-label='Dismiss alert' type='button' data-close]
+        span [aria-hidden="true" ] &times;
+
+  p
+    = f.label :name, 'Username'
+    br
+    = f.text_field :name
+
+  p
+    = f.label :password, 'Password'
+    br
+    = f.password_field :password
+
+  p
+    = f.label :password_confirmation
+    br
+    = f.password_field :password_confirmation
+
+  = f.submit 'Sign up', class: 'button primary'

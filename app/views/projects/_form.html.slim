@@ -1,13 +1,14 @@
 = form_for @project do |f|
 
   - if @project.errors.any?
-    #error_explanation
+    div [id='error_explanation' class="callout alert" data-closable]
       h2 = pluralize(@project.errors.size, 'error') + ' prohibited this project from being saved:'
 
       ul
         - @project.errors.full_messages.each do |msg|
           li = msg
-
+      button [class='close-button' aria-label="Dismiss alert" type='button' data-close ]
+        span [aria-hidden="true" ] &times;
 
   p
     = f.label :name
