@@ -74,3 +74,6 @@ gem 'slim-rails'
 
 # jquery
 gem 'jquery-rails'
+
+# use sorcery to authenticate
+gem 'sorcery'
