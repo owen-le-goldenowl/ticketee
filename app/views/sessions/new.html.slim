@@ -1,0 +1,12 @@
+h1 Log in
+= form_for login_path, method: 'POST' do |f|
+  p
+    = f.label :name
+    br
+    = f.text_field :name
+  p
+    = f.label :password
+    br
+    = f.password_field :password
+  = f.submit 'Log in', class: 'button primary'
+
