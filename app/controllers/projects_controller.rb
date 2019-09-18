@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  # before_action :require_login, except: %i[index,show]
+  before_action :authorize_admin!, except: %i[index show]
   before_action :set_project, only: %i[show edit update destroy]
 
   def index
@@ -20,9 +22,11 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show; end
+  def show;
+  end
 
-  def edit; end
+  def edit;
+  end
 
   def update
     if @project.update(project_params)
@@ -51,5 +55,13 @@ class ProjectsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'The project you were looking for could not be found'
     redirect_to projects_path
+  end
+
+  def authorize_admin!
+    require_login
+    unless current_user.admin?
+      flash[:alert] = 'You must be an admin to do that'
+      redirect_to root_path
+    end
   end
 end
