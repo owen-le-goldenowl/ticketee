@@ -1,2 +1,18 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+h1 User profile
+p
+  strong
+    | Created at:
+  =< @user.created_at
+p
+  strong
+    | User id:
+  =< @user.id
+p
+  strong
+    | User name:
+  =< @user.name
+p
+  strong
+    | User email:
+  =< @user.email
+= link_to 'Update information',edit_user_path(@user), class: 'button primary'
