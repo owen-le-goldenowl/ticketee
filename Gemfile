@@ -77,3 +77,6 @@ gem 'jquery-rails'
 
 # use sorcery to authenticate
 gem 'sorcery'
+
+# use pundit to authorize
+gem 'pundit'

@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
+    redirect_to projects_path
   end
 
 end

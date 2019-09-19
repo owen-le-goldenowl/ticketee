@@ -1,14 +1,18 @@
 class TicketsController < ApplicationController
   before_action :set_project
   before_action :set_ticket, only: %i[show edit update destroy]
-  before_action :require_login, except: %i[index show]
+  # before_action :require_login, except: %i[index show]
 
   def new
     @ticket = @project.tickets.build
+    authorize @ticket
   end
 
   def create
     @ticket = @project.tickets.build(ticket_params)
+
+    authorize @ticket
+
     @ticket.user = current_user
     if @ticket.save
       flash[:notice] = 'Ticket has been created'
@@ -19,13 +23,17 @@ class TicketsController < ApplicationController
     end
   end
 
-  def show;
+  def show
+    authorize @ticket
   end
 
-  def edit;
+  def edit
+    authorize @ticket
   end
 
   def update
+    authorize @ticket
+
     if @ticket.update(ticket_params)
       flash[:notice] = 'Ticket has been updated'
       redirect_to project_ticket_path(@project, @ticket)
@@ -36,6 +44,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
+    authorize @ticket
+
     @ticket.destroy
     flash[:notice] = 'Ticket has been deleted'
     redirect_to @project
@@ -58,10 +68,4 @@ class TicketsController < ApplicationController
     redirect_to project_path(@project)
   end
 
-  # overwrite this function of Sorcery gem to push a flash to the :require_login
-  # https://stackoverflow.com/a/52922147/5441369
-  def not_authenticated
-    flash[:alert] = 'Please log in first!'
-    redirect_to login_path
-  end
 end

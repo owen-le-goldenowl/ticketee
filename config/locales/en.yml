@@ -30,4 +30,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  pundit:
+    default: 'You are not authorized to perform this action!'
+    project_policy:
+      new?: 'You must be an admin to perform this action!'
+      create?: 'You must be an admin to perform this action!'
+      edit?: 'You must be an admin to perform this action!'
+      destroy?: 'You must be an admin to perform this action!'
+    ticket_policy:
+      new?: 'You must log in to perform this action!'
+      create?: 'You must be logged in and the creator of this ticket to perform this action!'
+      destroy?: 'You must be logged in and the creator of this ticket to perform this action!'
+      edit?: 'You must be logged in and the creator of this ticket to perform this action!'
+      update?: 'You must be logged in and the creator of this ticket to perform this action!'

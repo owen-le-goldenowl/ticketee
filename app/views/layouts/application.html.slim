@@ -15,8 +15,18 @@ html lang="en"
     = csrf_meta_tag
 
   body
-    nav
-      =link_to 'Sign up',new_user_path
+    - if !logged_in?
+      nav
+        = link_to 'Sign up', signup_path, class: 'button primary'
+        =< link_to 'Log in', login_path, class: 'button primary'
+    - else
+      p
+        | Hello user
+        strong
+          =< current_user.name
+      nav
+        = link_to 'Log out', logout_path, class: 'button primary'
+
     - flash.each do |key, value|
       - if key == 'notice'
         div [class='callout success' data-closable]
