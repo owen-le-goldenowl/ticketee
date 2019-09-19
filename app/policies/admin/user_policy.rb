@@ -3,10 +3,18 @@ class Admin::UserPolicy < ApplicationPolicy
 
   def initialize(user, _record)
     @user = user
-
+    @_record = _record
   end
 
   def index?
+    user.admin?
+  end
+
+  def new?
+    user.admin?
+  end
+
+  def create?
     user.admin?
   end
 

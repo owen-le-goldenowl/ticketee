@@ -1,0 +1,14 @@
+= form_for [:admin, @user] do |f|
+  - if @user.errors.any?
+    div#error_explanation
+      h2 = pluralize(@user.errors.size, 'error') + ' prohibited this user from being saved:'
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li = msg
+  p
+    = f.label :name
+    = f.text_field :name
+  p
+    = f.label :password
+    = f.password_field :password
+  = f.submit

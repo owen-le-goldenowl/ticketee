@@ -45,4 +45,6 @@ en:
       update?: 'You must be logged in and the creator of this ticket to perform this action!'
     admin/user_policy:
       index?: 'You must be an admin to perform this action!'
+      new?: 'You must be an admin to perform this action!'
+      create?: 'You must be an admin to perform this action!'
 

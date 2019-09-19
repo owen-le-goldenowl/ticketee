@@ -16,16 +16,18 @@ html lang="en"
 
   body
     - if !logged_in?
-      nav
-        = link_to 'Sign up', signup_path, class: 'button primary'
-        =< link_to 'Log in', login_path, class: 'button primary'
+      ul [class='menu']
+        li = link_to 'Sign up', signup_path
+        li =< link_to 'Log in', login_path
     - else
       p
         | Hello user
         strong
           =< current_user.name
-      nav
-        = link_to 'Log out', logout_path, class: 'button primary'
+      ul [class='menu']
+        li =< link_to 'Log out', logout_path
+        - if current_user.admin?
+          li =< link_to 'Admin', admin_root_path
 
     - flash.each do |key, value|
       - if key == 'notice'
