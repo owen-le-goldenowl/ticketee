@@ -1,4 +1,19 @@
 =link_to 'New User',new_admin_user_path
-ul#users
-  - @users.each do |user|
-    li = link_to user.name,[:admin,user]
+table
+  thead
+    tr
+      th User name
+      th Email
+      th Admin?
+  tbody
+    - @users.each do |u|
+      tr
+        td = link_to u.name,admin_user_path(u)
+        td = u.email
+        td
+          - if u.admin?
+            span
+              | &check;
+          - else
+            span
+              | &cross;

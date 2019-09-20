@@ -3,7 +3,6 @@ class Admin::UserPolicy < ApplicationPolicy
 
   def initialize(user, _record)
     @user = user
-    @_record = _record
   end
 
   def index?
