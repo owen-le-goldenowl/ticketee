@@ -1,0 +1,25 @@
+h1 User profile
+p
+  strong
+    | Created at:
+  =< @user.created_at
+p
+  strong
+    | User id:
+  =< @user.id
+p
+  strong
+    | User name:
+  =< @user.name
+p
+  strong
+    | User email:
+  =< @user.email
+p
+  strong
+    | Admin:
+  - if @user.admin?
+    |  Yes
+  - else
+    |  No
+= link_to 'Edit information',edit_admin_user_path(@user), class: 'button primary'
