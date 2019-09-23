@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_045155) do
+ActiveRecord::Schema.define(version: 2019_09_23_091709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: :cascade do |t|
+    t.string "asset"
+    t.bigint "ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_assets_on_ticket_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -29,7 +37,6 @@ ActiveRecord::Schema.define(version: 2019_09_23_045155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.string "asset"
     t.index ["project_id"], name: "index_tickets_on_project_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
@@ -45,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_045155) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "assets", "tickets"
   add_foreign_key "tickets", "projects"
   add_foreign_key "tickets", "users"
 end

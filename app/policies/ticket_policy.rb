@@ -31,7 +31,7 @@ class TicketPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true if user && user == ticket.user
+    true if (user && user == ticket.user) || user.admin?
   end
 
   class Scope < Scope
