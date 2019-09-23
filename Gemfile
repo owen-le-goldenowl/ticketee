@@ -80,3 +80,6 @@ gem 'sorcery'
 
 # use pundit to authorize
 gem 'pundit'
+
+# file upload
+gem 'carrierwave'

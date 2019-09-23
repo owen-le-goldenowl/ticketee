@@ -34,7 +34,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    byebug
     params = user_params.dup
     params[:password_confirmation] = params[:password]
 
@@ -49,7 +48,7 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     if @user == current_user
-      flash[:alert] = 'You cannnot delete yourself!'
+      flash[:alert] = 'You cannot delete yourself!'
     else
       @user.destroy
       flash[:notice] = 'User has been deleted'

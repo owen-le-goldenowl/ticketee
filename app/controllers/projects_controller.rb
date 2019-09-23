@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+
     @project = Project.new
     authorize @project
 
@@ -24,6 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+
     authorize @project
   end
 

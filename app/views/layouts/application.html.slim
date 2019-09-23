@@ -25,9 +25,10 @@ html lang="en"
         strong
           =< current_user.name
       ul [class='menu']
-        li =< link_to 'Log out', logout_path
         - if current_user.admin?
-          li =< link_to 'Admin', admin_root_path
+          li =< link_to 'Admin', admin_root_path, class: 'button'
+        li =< link_to 'Profile',user_path(current_user), class: 'button'
+        li =< link_to 'Log out', logout_path, class: 'button'
 
     - flash.each do |key, value|
       - if key == 'notice'
