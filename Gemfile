@@ -83,3 +83,5 @@ gem 'pundit'
 
 # file upload
 gem 'carrierwave'
+
+gem 'record_tag_helper'

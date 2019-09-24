@@ -1,0 +1,5 @@
+= div_for(comment, class: 'comment_partial') do
+  p
+    strong
+      = comment.user.name + ': '
+    = comment.text

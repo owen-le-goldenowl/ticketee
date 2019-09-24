@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
+  resources :tickets do
+    resources :comments
+  end
+
   resources :users
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

@@ -1,0 +1,5 @@
+= form_for [@ticket, @comment] do |f|
+
+  p
+    = f.text_area :text, placeholder: 'New comment'
+  = f.submit class: 'button'
