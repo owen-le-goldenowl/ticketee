@@ -6,14 +6,14 @@
       =< @ticket.user.name
   = simple_format(@ticket.description)
 
-  - if @ticket.asset.present?
+  - if @ticket.assets.present? && policy(@ticket.project).show?
     h3 Attached File
     .asset
-      p
-        = link_to File.basename(@ticket.asset.path),@ticket.asset.url
-      p
-        small
-          = number_to_human_size(@ticket.asset.size)
+      - @ticket.assets.each do |a|
+        p
+          = link_to File.basename(a.path),a.url
+          small
+            =< number_to_human_size(a.size)
 
 
 = link_to 'Edit Ticket',edit_project_ticket_path(@project, @ticket), class: 'button primary'

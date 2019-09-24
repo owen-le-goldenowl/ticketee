@@ -4,5 +4,5 @@ class Ticket < ApplicationRecord
 
   validates_presence_of :title, :description
   validates_length_of :description, minimum: 10
-  mount_uploader :asset, AssetUploader
+  mount_uploaders :assets, AssetUploader
 end
