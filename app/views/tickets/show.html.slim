@@ -9,11 +9,12 @@
   - if @ticket.assets.exists?
     h3 Attached Files:
     div.assets
-      - @ticket.assets.each do |a|
+      - @ticket.assets.each do |asset|
         p
-          = link_to File.basename(a.asset.path),a.asset.url
+          = link_to File.basename(asset.asset.path),file_path(asset)
+          / = file_path(asset)
           small
-            =< number_to_human_size(a.asset.size)
+            =< number_to_human_size(asset.asset.size)
 
 
 = link_to 'Edit Ticket',edit_project_ticket_path(@project, @ticket), class: 'button primary'
