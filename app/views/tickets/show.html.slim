@@ -4,6 +4,7 @@
     | Created by user
     strong
       =< @ticket.user.name
+  = render @ticket.state if @ticket.state
   = simple_format(@ticket.description)
 
   - if @ticket.assets.present? && policy(@ticket.project).show?
