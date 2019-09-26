@@ -30,3 +30,5 @@ p3.tickets.create!(title: 't1', description: 't1' * 10, user: u1)
 p3.tickets.create!(title: 't2', description: 't2' * 10, user: u2)
 p3.tickets.create!(title: 't3', description: 't3' * 10, user: u3)
 p3.tickets.create!(title: 't4', description: 't3' * 10, user: admin)
+
+
