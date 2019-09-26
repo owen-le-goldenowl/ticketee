@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   root 'projects#index'
 
   resources :projects do
-    resources :tickets
+    resources :tickets do
+      member do
+        post :watch
+      end
+    end
   end
 
   resources :tickets do

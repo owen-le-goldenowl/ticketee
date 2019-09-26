@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_project
-  before_action :set_ticket, only: %i[show edit update destroy]
+  before_action :set_ticket, only: %i[show edit update destroy watch]
   # before_action :require_login, except: %i[index show]
 
   def new
@@ -50,6 +50,17 @@ class TicketsController < ApplicationController
     @ticket.destroy
     flash[:notice] = 'Ticket has been deleted'
     redirect_to @project
+  end
+
+  def watch
+    if @ticket.watchers.exists? current_user
+      @ticket.watchers -= [current_user]
+      flash[:notice] = 'You are no logger watching this ticket'
+    else
+      @ticket.watchers << current_user
+      flash[:notice] = 'You are now watching this ticket'
+    end
+    redirect_to project_ticket_path(@project, @ticket)
   end
 
   private
