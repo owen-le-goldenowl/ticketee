@@ -2,13 +2,14 @@ class Comment < ApplicationRecord
   validates_presence_of :text
   belongs_to :user
   belongs_to :ticket
-  after_create :send_comment_updated_mail
+  after_create :sidekiq_perform
 
   private
 
-  def send_comment_updated_mail
-    (ticket.watchers - [user]).each do |u|
-      NotifierMailer.comment_updated(self, u).deliver
+  def sidekiq_perform
+    byebug
+    (self.ticket.watchers - [self.user]).each do |u|
+      CommentWorker.perform_async(self.id, u.id)
     end
   end
 end

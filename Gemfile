@@ -85,3 +85,4 @@ gem 'pundit'
 gem 'carrierwave'
 
 gem 'record_tag_helper'
+gem 'sidekiq'
